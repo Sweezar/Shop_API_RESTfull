@@ -1,0 +1,46 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author : berneick
+      changes:
+        - createTable:
+            tableName: client
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: client_name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: client_surname
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: birthday
+                  type: date
+                  constraints:
+                    nullable: false
+              - column:
+                  name: gender
+                  type: varchar(20)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: registration_date
+                  type: timestamp
+                  constraints:
+                    nullable: false
+              - column:
+                  name: address_id
+                  type: uuid
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_client_address
+                    references: address(id)

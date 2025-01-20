@@ -1,0 +1,23 @@
+databaseChangeLog:
+  - changeSet:
+      id: 5
+      author : berneick
+      changes:
+        - createTable:
+            tableName: address
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: country
+                  type: varchar(100)
+              - column:
+                  name: city
+                  type: varchar(100)
+              - column:
+                  name: street
+                  type: varchar(255)

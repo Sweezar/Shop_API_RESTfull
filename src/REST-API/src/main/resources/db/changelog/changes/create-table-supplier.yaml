@@ -1,0 +1,31 @@
+databaseChangeLog:
+  - changeSet:
+      id: 3
+      author : berneick
+      changes:
+        - createTable:
+            tableName: supplier
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: address_id
+                  type: uuid
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_supplier_address
+                    references: address(id)
+              - column:
+                  name: phone_number
+                  type: varchar(20)
+                  constraints:
+                    nullable: false

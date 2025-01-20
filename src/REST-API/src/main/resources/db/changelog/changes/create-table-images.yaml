@@ -1,0 +1,19 @@
+databaseChangeLog:
+  - changeSet:
+      id: 4
+      author : berneick
+      changes:
+        - createTable:
+            tableName: images
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: image
+                  type: bytea
+                  constraints:
+                    nullable: false

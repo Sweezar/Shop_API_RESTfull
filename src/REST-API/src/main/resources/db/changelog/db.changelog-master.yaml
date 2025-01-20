@@ -1,0 +1,12 @@
+databaseChangeLog:
+  - include:
+      file: db/changelog/changes/create-table-address.yaml
+  - include:
+      file: db/changelog/changes/create-table-client.yaml
+  - include:
+      file: db/changelog/changes/create-table-supplier.yaml
+  - include:
+      file: db/changelog/changes/create-table-images.yaml
+  - include:
+      file: db/changelog/changes/create-table-product.yaml
+

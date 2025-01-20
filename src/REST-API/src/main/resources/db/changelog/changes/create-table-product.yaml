@@ -1,0 +1,53 @@
+databaseChangeLog:
+  - changeSet:
+      id: 2
+      author : berneick
+      changes:
+        - createTable:
+            tableName: product
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: category
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: price
+                  type: numeric(10, 2)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: available_stock
+                  type: integer
+                  constraints:
+                    nullable: false
+              - column:
+                  name: last_update_date
+                  type: timestamp
+                  constraints:
+                    nullable: false
+              - column:
+                  name: supplier_id
+                  type: uuid
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_product_supplier
+                    references: supplier(id)
+              - column:
+                  name: image_id
+                  type: uuid
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_product_image
+                    references: images(id)
