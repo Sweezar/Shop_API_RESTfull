@@ -48,6 +48,5 @@ databaseChangeLog:
                   name: image_id
                   type: uuid
                   constraints:
-                    nullable: false
                     foreignKeyName: fk_product_image
                     references: images(id)

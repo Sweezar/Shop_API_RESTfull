@@ -9,4 +9,3 @@ databaseChangeLog:
       file: db/changelog/changes/create-table-images.yaml
   - include:
       file: db/changelog/changes/create-table-product.yaml
-
