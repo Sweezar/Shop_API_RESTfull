@@ -11,5 +11,6 @@ import java.util.UUID;
 @AllArgsConstructor
 public class ImageDTO {
     private UUID imageId;
+
     private byte[] image;
 }

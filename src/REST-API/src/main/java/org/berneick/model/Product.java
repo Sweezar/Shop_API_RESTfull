@@ -35,7 +35,7 @@ public class Product {
     @JoinColumn(name = "supplier_id", referencedColumnName = "id")
     private Supplier supplier;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "image_id", referencedColumnName = "id")
     private Image image;
 }
