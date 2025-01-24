@@ -18,9 +18,11 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation ("org.springframework.boot:spring-boot-starter-validation")
 
+    // Hibernate
+    implementation("org.hibernate.orm:hibernate-core:6.6.5.Final")
+
     // Swagger
-//    implementation ("io.springfox:springfox-swagger2:3.0.0")
-//    implementation ("io.springfox:springfox-swagger-ui:3.0.0")
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.3")
 
     // Lombok
     compileOnly("org.projectlombok:lombok:1.18.36")
@@ -42,12 +44,4 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
-}
-
-tasks.jar {
-    enabled = true
-    archiveClassifier.set("")
-    manifest {
-        attributes["Main-Class"] = "org.berneick.ShopApp"
-    }
 }

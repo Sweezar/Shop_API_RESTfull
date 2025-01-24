@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Arrays;
 import java.util.UUID;
 
 @Service
@@ -32,9 +33,19 @@ public class ImageService {
         Product product = productRepository.findById(productId)
                 .orElseThrow(() -> new ProductNotFoundException("Product not found with id " + productId));
 
-        Image newImage = product.getImage();
+        if(image == null) {
+            throw new RuntimeException("Image bytea is null");
+        }
+
+        Image newImage = new Image();
         newImage.setImage(image);
+
         Image savedImage = imageRepository.save(newImage);
+
+        System.out.println("Saved image ID: " + savedImage.getId());
+
+        product.setImage(newImage);
+        productRepository.save(product);
 
         return imageMapper.toDTO(savedImage);
     }
@@ -52,16 +63,16 @@ public class ImageService {
 
     @Nonnull
     @Transactional(readOnly = true)
-    public ImageDTO findById(@Nonnull UUID imageId) {
+    public byte[] findById(@Nonnull UUID imageId) {
         Image currentImage = imageRepository.findById(imageId)
                 .orElseThrow(() -> new ImageNotFoundException("Image not found with id: " + imageId));
 
-        return imageMapper.toDTO(currentImage);
+        return currentImage.getImage();
     }
 
     @Nonnull
     @Transactional(readOnly = true)
-    public ImageDTO findByProductId(@Nonnull UUID productId) {
+    public byte[] findByProductId(@Nonnull UUID productId) {
         Product product = productRepository.findById(productId)
                 .orElseThrow(() -> new ProductNotFoundException("Product not found with id " + productId));
 
@@ -69,7 +80,7 @@ public class ImageService {
             throw new ImageNotFoundException("Image not found for product with id: " + productId);
         }
 
-        return imageMapper.toDTO(product.getImage());
+        return product.getImage().getImage();
     }
 
     @Transactional

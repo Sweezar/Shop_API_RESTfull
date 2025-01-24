@@ -33,9 +33,11 @@ public class ProductMapper {
         supplier.setId(productDTO.getSupplierId());
         product.setSupplier(supplier);
 
-        Image image = new Image();
-        image.setId(productDTO.getImageId());
-        product.setImage(image);
+        if(productDTO.getImageId() != null) {
+            Image image = new Image();
+            image.setId(productDTO.getImageId());
+            product.setImage(image);
+        }
 
         return product;
     }
