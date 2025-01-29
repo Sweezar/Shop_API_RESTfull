@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "org.berneick"
-version = "1.0-SNAPSHOT"
+version = "1.0"
 
 repositories {
     mavenCentral()
@@ -44,4 +44,8 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
+}
+
+tasks.withType<Jar> {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 }
